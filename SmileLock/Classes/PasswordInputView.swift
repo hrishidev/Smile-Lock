@@ -156,8 +156,8 @@ private extension PasswordInputView {
         //configure button
         NSLayoutConstraint.addEqualConstraintsFromSubView(button, toSuperView: self)
         button.isExclusiveTouch = true
-        button.addTarget(self, action: #selector(PasswordInputView.touchDown), for: [.touchDown])
-        button.addTarget(self, action: #selector(PasswordInputView.touchUp), for: [.touchUpInside, .touchDragOutside, .touchCancel, .touchDragExit])
+        button.addTarget(self, action: #selector(PasswordInputView.touchDown), for: [UIControl.Event.touchDown])
+        button.addTarget(self, action: #selector(PasswordInputView.touchUp), for: [UIControl.Event.touchUpInside, UIControl.Event.touchDragOutside, UIControl.Event.touchCancel, UIControl.Event.touchDragExit])
     }
     
     //MARK: Animation
@@ -200,7 +200,7 @@ private extension PasswordInputView {
     }
     
     func tappedAnimation(animations: @escaping () -> (), completion: (() -> ())?) {
-        UIView.animate(withDuration: 0.25, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: animations) { _ in
+        UIView.animate(withDuration: 0.25, delay: 0, options: [UIView.AnimationOptions.allowUserInteraction, UIView.AnimationOptions.beginFromCurrentState], animations: animations) { _ in
             completion?()
         }
     }

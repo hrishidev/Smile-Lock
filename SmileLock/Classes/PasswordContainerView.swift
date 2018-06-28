@@ -24,7 +24,7 @@ open class PasswordContainerView: UIView {
     //MARK: Property
     open var deleteButtonLocalizedTitle: String = "" {
         didSet {
-            deleteButton.setTitle(NSLocalizedString(deleteButtonLocalizedTitle, comment: ""), for: .normal)
+            deleteButton.setTitle(NSLocalizedString(deleteButtonLocalizedTitle, comment: ""), for: UIControl.State.normal)
         }
     }
     
@@ -52,7 +52,7 @@ open class PasswordContainerView: UIView {
     open override var tintColor: UIColor! {
         didSet {
             guard !isVibrancyEffect else { return }
-            deleteButton.setTitleColor(tintColor, for: UIControlState())
+            deleteButton.setTitleColor(tintColor, for: UIControl.State())
             passwordDotView.strokeColor = tintColor
             touchAuthenticationButton.tintColor = tintColor
             passwordInputViews.forEach {
@@ -151,7 +151,7 @@ open class PasswordContainerView: UIView {
             }
         }
         
-        touchAuthenticationButton.setImage(image, for: UIControlState())
+        touchAuthenticationButton.setImage(image, for: UIControl.State())
         touchAuthenticationButton.tintColor = tintColor
     }
     
@@ -252,7 +252,7 @@ private extension PasswordContainerView {
             highlightTextColor = highlightedColor
         }
         
-        deleteButton.setTitleColor(titleColor, for: .normal)
+        deleteButton.setTitleColor(titleColor, for: UIControl.State.normal)
         passwordDotView.strokeColor = strokeColor
         passwordDotView.fillColor = fillColor
         touchAuthenticationButton.tintColor = strokeColor
